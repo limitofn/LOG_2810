@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f716cbf-b83f-4a2e-8a3c-4f6f40b39e82" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Helloworld.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="6f716cbf-b83f-4a2e-8a3c-4f6f40b39e82" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +68,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572290930899</updated>
-      <workItem from="1572290974001" duration="847000" />
+      <workItem from="1572290974001" duration="1319000" />
     </task>
     <task id="LOCAL-00001" summary="Bonjour!!">
       <created>1572291134027</created>
