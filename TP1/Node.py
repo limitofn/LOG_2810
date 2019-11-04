@@ -1,11 +1,13 @@
 class Node:
-    def __init__(self, nom):
+    def __init__(self, nom,numberA,numberB,numberC):
         self.name = nom
-        self.nbA = 0
-        self.nbB = 0
-        self.nbC = 0
+        self.nbA = numberA
+        self.nbB = numberB
+        self.nbC = numberC
+
 
     def setterObjects(self,numberA,numberB,numberC):
         self.nbA = numberA
         self.nbB = numberB
         self.nbC = numberC
+
