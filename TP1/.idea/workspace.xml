@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f716cbf-b83f-4a2e-8a3c-4f6f40b39e82" name="Default Changelist" comment="" />
+    <list default="true" id="6f716cbf-b83f-4a2e-8a3c-4f6f40b39e82" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Djikstra.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commande.py" beforeDir="false" afterPath="$PROJECT_DIR$/Commande.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Helloworld.py" beforeDir="false" afterPath="$PROJECT_DIR$/Helloworld.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Robot.py" beforeDir="false" afterPath="$PROJECT_DIR$/Robot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weighted_graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/weighted_graph.png" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +30,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Helloworld.py" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -37,7 +44,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.Python3.6">
     <configuration name="Python3.6" type="PythonConfigurationType" factoryName="Python">
       <module name="TP1" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -57,6 +64,37 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="WeightedNode" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="TP1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/WeightedNode.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.Python3.6" />
+      <item itemvalue="Python.WeightedNode" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.WeightedNode" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -68,7 +106,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572290930899</updated>
-      <workItem from="1572290974001" duration="1319000" />
+      <workItem from="1572290974001" duration="4368000" />
+      <workItem from="1572823044849" duration="6822000" />
+      <workItem from="1572885215623" duration="8474000" />
     </task>
     <task id="LOCAL-00001" summary="Bonjour!!">
       <created>1572291134027</created>
@@ -88,7 +128,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -97,5 +139,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Bonjour!!" />
     <option name="LAST_COMMIT_MESSAGE" value="Bonjour!!" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/TP1$WeightedNode.coverage" NAME="WeightedNode Coverage Results" MODIFIED="1572825949475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
