@@ -1,8 +1,8 @@
 class Command:
     def __init__(self):
-        self.Setter()
+        self.setter()
 
-    def Setter(self):
+    def setter(self):
         print('Passage de Commande')
         self.nbA = int(input('Nombre objet A'))
         self.nbB = int(input('Nombre objet B'))
