@@ -3,9 +3,13 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import FileHandler as fl
 import djikstra_algo as algoDji
+import Commande as comm
+
 
 
 G = fl.fillGraphFromFile('entrepot.txt')
+
+commandePasse = comm.Command()
 
 elarge=[(u,v) for (u,v,d) in G.edges(data=True) if d['weight'] >0.5]
 esmall=[(u,v) for (u,v,d) in G.edges(data=True) if d['weight'] <=0.5]
@@ -34,4 +38,4 @@ plt.show() # display
 length, path = algoDji.graph_to_length (G,0)
 print (length)
 print (path)
-print (algoDji.path_to_object(G,path))
+print (algoDji.path_to_object(G,path, commandePasse))
