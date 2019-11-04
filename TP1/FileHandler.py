@@ -21,11 +21,11 @@ def fillGraphFromFile(fileName):
         elif(secondePartie == False) :
             #On lit des nodes, on s'attends a 4 chiffres
             inputNode = [int(x) for x in line.split(',')]
-            nodeList.append(n.Node(inputNode[0],inputNode[1],inputNode[2],inputNode[3]))
+            graphEntrepot.add_node(inputNode[0], nbA=inputNode[1], nbB = inputNode[2],nbC=inputNode[3] )
         else:
             #On lit des Arcs, on peuple le graphe
             intputGraph = [int(x) for x in line.split(',')]
-            graphEntrepot.add_edge(nodeList[intputGraph[0]], nodeList[intputGraph[1]], weight=intputGraph[2])
+            graphEntrepot.add_edge(intputGraph[0], intputGraph[1], weight=intputGraph[2])
 
     f.close()
     return graphEntrepot

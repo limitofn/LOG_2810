@@ -20,6 +20,7 @@ nx.draw_networkx_edges(G,pos,edgelist=esmall,
                     width=6,alpha=0.5,edge_color='b',style='dashed')
 
 # labels
+
 nx.draw_networkx_labels(G,pos,font_size=20,font_family='sans-serif')
 
 plt.axis('off')
