@@ -24,3 +24,8 @@ class Command:
             print('Utilisation robot X')
             return 'X'
 
+    def afficherCommande(self):
+        print('nombre object A '+ self.nbA)
+        print('nombre object B ' + self.nbB)
+        print('nombre object C ' + self.nbC)
+
