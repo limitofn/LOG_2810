@@ -11,65 +11,51 @@ def path_to_object (graph, path, commandAsked):
         nbrA = 0
         nbrB = 0
         nbrC = 0
-        for knot in path[key]:
-            nbrA += graph._node[knot]['nbA']
-            nbrB += graph._node[knot]['nbB']
-            nbrC += graph._node[knot]['nbC']
+        for nodeIndex in path[key]:
+            nbrA += graph._node[nodeIndex]['nbA']
+            nbrB += graph._node[nodeIndex]['nbB']
+            nbrC += graph._node[nodeIndex]['nbC']
             if (nbrA >= commandAsked.nbA) & (nbrB >= commandAsked.nbB) & (nbrC >= commandAsked.nbC):
-                return path[knot]
+                return path[nodeIndex]
 
 #finds all the stops needed to fulfill the command
 def finds_stops (graph, pathToFinalNode, commandAsked) :
     stops = []
-    for knot in pathToFinalNode:
-        nbrA = graph._node[knot]['nbA']
-        nbrB = graph._node[knot]['nbB']
-        nbrC = graph._node[knot]['nbC']
-        if ((nbrA != 0)&(commandAsked.nbA != 0)) :
-            if nbrA == commandAsked.nbA :
-                stops.append([knot, 'A', nbrA])
-                commandAsked.nbA = 0
-            elif nbrA < commandAsked.nbA :
-                stops.append([knot, 'A', nbrA])
-                commandAsked.nbA = commandAsked.nbA - nbrA
-            elif nbrA > commandAsked.nbA :
-                stops.append([knot, 'A', commandAsked.nbA])
-                commandAsked.nbA = 0
-        if ((nbrB !=0)&(commandAsked.nbB != 0)) :
-            if nbrB == commandAsked.nbB :
-                stops.append([knot, 'B', nbrB])
-                commandAsked.nbB = 0
-            elif nbrB < commandAsked.nbB :
-                stops.append([knot, 'B', nbrB])
-                commandAsked.nbB =commandAsked.nbB - nbrB
-            elif nbrB > commandAsked.nbB :
-                stops.append([knot, 'B', commandAsked.nbB])
-                commandAsked.nbB = 0
-        if ((nbrC != 0)&(commandAsked.nbC != 0)) :
-            if nbrC == commandAsked.nbC :
-                stops.append([knot, 'C', nbrC])
-                commandAsked.nbC = 0
-            elif nbrC < commandAsked.nbC :
-                stops.append([knot, 'C', nbrC])
-                commandAsked.nbC = commandAsked.nbC - nbrC
-            elif nbrC > commandAsked.nbC :
-                stops.append([knot, 'C', commandAsked.nbC])
-                commandAsked.nbC = 0
+    for nodeIndex in pathToFinalNode:\
+        #list the objects present in the node
+        nbrA = graph._node[nodeIndex]['nbA']
+        nbrB = graph._node[nodeIndex]['nbB']
+        nbrC = graph._node[nodeIndex]['nbC']
+        partialCommandFullfill(nbrA,commandAsked.nbA,stops,'A',nodeIndex)
+        partialCommandFullfill(nbrB, commandAsked.nbB, stops, 'B', nodeIndex)
+        partialCommandFullfill(nbrC, commandAsked.nbC, stops, 'C', nodeIndex)
     stops.reverse()
     return stops
 
+def partialCommandFullfill(nbr,nbCommand,listOfStops,type,nodeIndex):
+    #input : fills one stop with the correct order, type is a string
+    if ((nbr != 0) & (nbCommand != 0)):
+        if nbr == nbCommand:
+            listOfStops.append([nodeIndex, type, nbr]) #object = command. put the command to 0 and append the stop
+            nbCommand = 0
+        elif nbr < nbCommand:
+            listOfStops.append([nodeIndex, 'A', nbr])  #TODO: si la commande est plus grand on modifie la commande par le nombre de node puis on append le nombre de node ici
+            nbCommand = nbCommand - nbr
+        elif nbr > nbCommand:
+            listOfStops.append([nodeIndex, 'A', nbCommand]) #TODO: si le nombre requis est plus grand, on append la commande
+            nbCommand = 0
 
 def robot_actions (pathToFinalNode, stops) :
     actionSequence = []
     endOfPath = len(pathToFinalNode)
-    for knot in range (0, endOfPath-1)  :
-        actionSequence.append([pathToFinalNode[knot], 'to', pathToFinalNode[knot+1]])
+    for nodeIndex in range (0, endOfPath-1)  :
+        actionSequence.append([pathToFinalNode[nodeIndex], 'to', pathToFinalNode[nodeIndex+1]])
     pathToFinalNode.reverse()
-    for knot in range(0, endOfPath - 1):
-        if pathToFinalNode[knot] == stops[0][0] :
-            actionSequence.append([pathToFinalNode[knot], 'get object', stops[0][1]])
+    for nodeIndex in range(0, endOfPath - 1):
+        if pathToFinalNode[nodeIndex] == stops[0][0] :
+            actionSequence.append([pathToFinalNode[nodeIndex], 'get object', stops[0][1]])
             del stops[0]
-        actionSequence.append([pathToFinalNode[knot], 'to', pathToFinalNode[knot + 1]])
+        actionSequence.append([pathToFinalNode[nodeIndex], 'to', pathToFinalNode[nodeIndex + 1]])
     return actionSequence
 
 
