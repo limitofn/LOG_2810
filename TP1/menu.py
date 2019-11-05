@@ -4,10 +4,12 @@ import matplotlib.pyplot as plt
 import FileHandler as fl
 import djikstra_algo as algoDji
 import Commande as comm
+import Robot as rob
 import os
 
 commandAsked = 0
 G = 0
+robotUtilise
 
 switcher = {
     1: creerGraphe,
@@ -63,6 +65,9 @@ def afficherGraphe():
 def prendreCommande():
     print("<--------Prendre la commande--------->"+"\n")
     commandAsked = comm.Command()
+    type = commandAsked.commandeValide()
+    robotUtilise = rob.Robot(type)
+
 
 def afficherCommande():
     print("<--------Afficher la derniere commande--------->"+"\n")
