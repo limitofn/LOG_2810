@@ -10,7 +10,16 @@ class Robot:
         self.conteneurB = nbB
         self.conteneurC = nbC
 
-    def calculVitesse(self):
+    def add(self,number, type):
+        #add objects to the robot
+        if (type =='A'):
+            self.conteneurA += number
+        if (type =='B'):
+            self.conteneurB += number
+        if (type =='C'):
+            self.conteneurC += number
+
+    def calculConstVitesse(self):
         if self.type == 'X':
             return 1 + self.conteneurA + self.contenurB * 3
         elif self.type == 'Y':
