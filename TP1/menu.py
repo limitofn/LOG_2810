@@ -60,13 +60,17 @@ def creerGraphe():
 
 def afficherGraphe():
     print("<--------Afficher le graphe--------->"+"\n")
-    plt.show()  # display
+    if G == 0:
+        print("Veuillez creer le graphique avant" + "\n")
+    else:
+        plt.show()  # display
 
 def prendreCommande():
     print("<--------Prendre la commande--------->"+"\n")
     commandAsked = comm.Command()
     type = commandAsked.commandeValide()
-    robotUtilise = rob.Robot(type)
+    if type != none:
+        robotUtilise = rob.Robot(type)
 
 
 def afficherCommande():
@@ -78,8 +82,11 @@ def afficherCommande():
 
 def TrouverChemin():
     print("<--------Trouver le plus court Chemin--------->"+"\n")
-    actionSequence = algoDji.find_way(G, commandAsked)
-    print(actionSequence)
+    if G == 0:
+        print("Veuillez creer le graphique avant" + "\n")
+    else:
+        actionSequence = algoDji.find_way(G, commandAsked)
+        print(actionSequence)
 
 def prendreChoix():
     return affichageDesChoix()
