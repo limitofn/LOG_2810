@@ -53,26 +53,45 @@ def printCost (pathToFinalNode, stops, robotType,graph) :
     robotCarrier = rob.Robot(robotType)
     constK = robotCarrier.calculConstVitesse()
 
+    # Calculate cost to get to final node from initial node
 
-    node = 0
-    previousNode = 0
-    sum = 0
+
     for node in pathToFinalNode:
-        #0 etant la premiere node, on passe au deuxieme element pour avoir des paires qui se suivent
+        sum = 0
+        #0 etant la premiere node, on passe au deuxieme element pour avoir des paires qui se suivent jusqu'a la final node
         if node == 0:
             previousNode = 0
             continue
-        sum = graph.get_edge_data(previousNode,node)['weight']
+        sum = graph.get_edge_data(previousNode,node)['weight'] * robotCarrier.calculConstVitesse()
         costSum += sum
         print('Cost entre ' + str(previousNode) + ' et ' + str(node) +'  ' + str(sum))
         previousNode = node
 
     print("")
-
-    #Calculate cost to get to final node from initial node
-
     #Starting from final node, pick up objects then calculate cost
     # to next node until first node is reached.
+
+    #Inverse the path so that it starts at final node and ends at first node
+    pathToFinalNode.reverse()
+
+    for node in pathToFinalNode:
+
+        #if the node where we are contains objets to be added, add them
+        for stop in stops:
+            if stop[0] == node:
+                robotCarrier.add(stop[2],stop[1])
+                print('Ajout de ' + str(stop[2]) + ' ' + stop[1] +' au noeud ' + str(node))
+
+        sum = 0
+        if node == pathToFinalNode[0]:
+            previousNode = pathToFinalNode[0]
+            continue
+        sum = graph.get_edge_data(previousNode, node)['weight'] * robotCarrier.calculConstVitesse()
+        costSum += sum
+        print('Cost entre ' + str(previousNode) + ' et ' + str(node) + '  ' + str(sum))
+
+
+
 
     #print final cost
 
