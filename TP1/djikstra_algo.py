@@ -3,7 +3,18 @@ import networkx as nx
 #finds the fastest path to each node
 def graph_to_length (graph, source_node):
     length, path = nx.single_source_dijkstra(graph, source_node)
+    print(length)
+    print(path)
     return length, path
+
+#create several path while combining dijkstra from different starting nodes
+def multiply_path (graph, path) :
+    new_length = {}
+    new_path = {}
+    for key in path.keys():
+        add_length , add_path = nx.single_source_dijkstra(graph, key)
+        if key != 0 :
+
 
 #finds the closest node where all the command can be filled while going to her
 def path_to_object (graph, path, commandAsked):
@@ -75,6 +86,7 @@ def robot_actions (pathToFinalNode, stops) :
 
 def find_way (graph, commandAsked):
     length, path = graph_to_length(graph, 0)
+    multiply_path(graph, path)
     pathToFinalNode = path_to_object(graph, path, commandAsked)
     stops = finds_stops(graph, pathToFinalNode, commandAsked)
     actionSequence = robot_actions(pathToFinalNode, stops)
