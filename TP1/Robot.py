@@ -9,5 +9,3 @@ class Robot:
         self.conteneurA = nbA
         self.conteneurB = nbB
         self.conteneurC = nbC
-
-    def

@@ -9,7 +9,7 @@ import Commande as comm
 
 G = fl.fillGraphFromFile('entrepot.txt')
 
-commandePasse = comm.Command()
+commandAsked = comm.Command()
 
 elarge=[(u,v) for (u,v,d) in G.edges(data=True) if d['weight'] >0.5]
 esmall=[(u,v) for (u,v,d) in G.edges(data=True) if d['weight'] <=0.5]
@@ -35,7 +35,5 @@ plt.show() # display
 
 #test algo
 
-length, path = algoDji.graph_to_length (G,0)
-print (length)
-print (path)
-print (algoDji.path_to_object(G,path, commandePasse))
+actionSequence = algoDji.find_way (G, commandAsked)
+print(actionSequence)
