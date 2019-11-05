@@ -1,9 +1,9 @@
 class Robot:
     def __init__(self, type):
-        conteneurA = 0
-        conteneurB = 0
-        conteneurC = 0
-        type = type
+        self.conteneurA = 0
+        self.conteneurB = 0
+        self.conteneurC = 0
+        self.type = type
 
     def setter(self, nbA,nbB,nbC):
         self.conteneurA = nbA
@@ -23,6 +23,6 @@ class Robot:
         if self.type == 'X':
             return 1 + self.conteneurA + self.contenurB * 3
         elif self.type == 'Y':
-            return 1.5 + 0.6*(self.conteneurA + self.contenurB * 3 + self.conteneurC*6)
+            return 1.5 + 0.6*(self.conteneurA + self.conteneurB * 3 + self.conteneurC*6)
         elif self.type == 'Z':
             return 2.5+ 0.2(self.conteneurA + self.contenurB * 3 + self.conteneurC*6)

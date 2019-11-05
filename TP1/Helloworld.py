@@ -35,5 +35,12 @@ plt.show() # display
 
 #test algo
 
+#TODO: Needs modification here, manque d'independance
+length, path = algoDji.graph_to_length(G, 0)
+pathToFinalNode = algoDji.path_to_object(G, path, commandAsked)
+stops = algoDji.finds_stops(G, pathToFinalNode, commandAsked)
+
+algoDji.printCost(pathToFinalNode,stops,commandAsked.commandeValide(),G)
+
 actionSequence = algoDji.find_way (G, commandAsked)
 print(actionSequence)

@@ -46,11 +46,29 @@ def partialCommandFullfill(nbr,nbCommand,listOfStops,type,nodeIndex):
             listOfStops.append([nodeIndex, 'A', nbCommand]) #TODO: si le nombre requis est plus grand, on append la commande
             nbCommand = 0
 
-def printCost (pathToFinalNode, stops, robotType) :
+def printCost (pathToFinalNode, stops, robotType,graph) :
     #requires path from 0 to final node,list of stop and objects taken, robot type
     weight = 0
+    costSum = 0
     robotCarrier = rob.Robot(robotType)
-    
+    constK = robotCarrier.calculConstVitesse()
+
+
+    node = 0
+    previousNode = 0
+    sum = 0
+    for node in pathToFinalNode:
+        #0 etant la premiere node, on passe au deuxieme element pour avoir des paires qui se suivent
+        if node == 0:
+            previousNode = 0
+            continue
+        sum = graph.get_edge_data(previousNode,node)['weight']
+        costSum += sum
+        print('Cost entre ' + str(previousNode) + ' et ' + str(node) +'  ' + str(sum))
+        previousNode = node
+
+    print("")
+
     #Calculate cost to get to final node from initial node
 
     #Starting from final node, pick up objects then calculate cost
@@ -59,5 +77,24 @@ def printCost (pathToFinalNode, stops, robotType) :
     #print final cost
 
 
+def robot_actions (pathToFinalNode, stops) :
+    actionSequence = []
+    endOfPath = len(pathToFinalNode)
+    for nodeIndex in range (0, endOfPath-1)  :
+        actionSequence.append([pathToFinalNode[nodeIndex], 'to', pathToFinalNode[nodeIndex+1]])
+    pathToFinalNode.reverse()
+    for nodeIndex in range(0, endOfPath - 1):
+        if pathToFinalNode[nodeIndex] == stops[0][0] :
+            actionSequence.append([pathToFinalNode[nodeIndex], 'get object', stops[0][1]])
+            del stops[0]
+        actionSequence.append([pathToFinalNode[nodeIndex], 'to', pathToFinalNode[nodeIndex + 1]])
+    return actionSequence
 
+
+def find_way (graph, commandAsked):
+    length, path = graph_to_length(graph, 0)
+    pathToFinalNode = path_to_object(graph, path, commandAsked)
+    stops = finds_stops(graph, pathToFinalNode, commandAsked)
+    actionSequence = robot_actions(pathToFinalNode, stops)
+    return actionSequence
 
