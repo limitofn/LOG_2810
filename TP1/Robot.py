@@ -15,7 +15,7 @@
                 #On prends le chemin a parcourir de node debut a node end.
                 #Calcul du cout vers la node de fin
                 cout = 0
-                
+
                 previous = None
                 for index in path:
                     if(previous != None):
