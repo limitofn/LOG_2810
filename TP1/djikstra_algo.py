@@ -1,11 +1,14 @@
 import networkx as nx
 
 #finds the fastest path to each node
+#créer une liste de chemin vers chaque node depuis la node de départ
 def graph_to_length (graph, source_node):
     length, path = nx.single_source_dijkstra(graph, source_node)
     return length, path
 
 #finds the closest node where all the command can be filled while going to her
+#inputs : le graphique, la lite des chemins, la commande demandée
+#outputs : tableau contenant le chemin vers la node finale répondant à la commande
 def path_to_object (graph, path, commandAsked):
     for key in path.keys():
         nbrA = 0
@@ -19,6 +22,10 @@ def path_to_object (graph, path, commandAsked):
                 return path[knot]
 
 #finds all the stops needed to fulfill the command
+#la commande regarde pour chaque node si elle possède des éléments A B ou C
+#elle compare ses éléments avec les besoins de la commande et met à jour celle-ci on fonction
+#inputs : graph, dictionnaire de chamin, commande
+#outputs : tableau listant les arrets sur le chemin et quel objet est récupéré à quel endroit
 def finds_stops (graph, pathToFinalNode, commandAsked) :
     stops = []
     for knot in pathToFinalNode:
@@ -58,7 +65,9 @@ def finds_stops (graph, pathToFinalNode, commandAsked) :
     stops.reverse()
     return stops
 
-
+#details les actions du robots sur le chemin
+#inputs : le tableau contenant le chemin jusqu'a la node finale, le tableau contenant la liste des arrets du chemin retour
+#outputs : liste des étapes réalisees sequentiellment par le robot
 def robot_actions (pathToFinalNode, stops) :
     actionSequence = []
     endOfPath = len(pathToFinalNode)
@@ -72,7 +81,7 @@ def robot_actions (pathToFinalNode, stops) :
         actionSequence.append([pathToFinalNode[knot], 'to', pathToFinalNode[knot + 1]])
     return actionSequence
 
-
+#fonction retournant la liste d'actions et le chemin parcouru par le robot
 def find_way (graph, commandAsked):
     length, path = graph_to_length(graph, 0)
     pathToFinalNode = path_to_object(graph, path, commandAsked)
