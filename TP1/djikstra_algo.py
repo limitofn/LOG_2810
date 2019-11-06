@@ -40,10 +40,10 @@ def partialCommandFullfill(nbr,nbCommand,listOfStops,type,nodeIndex):
             listOfStops.append([nodeIndex, type, nbr]) #object = command. put the command to 0 and append the stop
             nbCommand = 0
         elif nbr < nbCommand:
-            listOfStops.append([nodeIndex, 'A', nbr])  #TODO: si la commande est plus grand on modifie la commande par le nombre de node puis on append le nombre de node ici
+            listOfStops.append([nodeIndex, type, nbr])  #TODO: si la commande est plus grand on modifie la commande par le nombre de node puis on append le nombre de node ici
             nbCommand = nbCommand - nbr
         elif nbr > nbCommand:
-            listOfStops.append([nodeIndex, 'A', nbCommand]) #TODO: si le nombre requis est plus grand, on append la commande
+            listOfStops.append([nodeIndex, type, nbCommand]) #TODO: si le nombre requis est plus grand, on append la commande
             nbCommand = 0
 
 def printCost (pathToFinalNode, stops, robotType,graph) :
