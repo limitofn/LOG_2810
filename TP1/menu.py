@@ -1,5 +1,5 @@
 import networkx as nx
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import FileHandler as fl
 import djikstra_algo as algoDji
 import Commande as comm
