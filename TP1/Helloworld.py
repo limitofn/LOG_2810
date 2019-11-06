@@ -43,7 +43,7 @@ pathToFinalNode = algoDji.path_to_object(G, path, commandAsked)
 stops = algoDji.finds_stops(G, pathToFinalNode, commandAsked)
 
 
-actionSequence = algoDji.find_way (G, commandAsked)
-print(actionSequence)
+#actionSequence = algoDji.find_way (G, commandAsked)
+#print(actionSequence)
 
 print(objDij.fonctionDjikstraObjet(G,commandAsked))

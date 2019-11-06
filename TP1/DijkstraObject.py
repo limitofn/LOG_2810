@@ -1,5 +1,7 @@
 import networkx as nx
 import Commande as comm
+import networkx as nx
+import Commande as comm
 import Robot as rob
 import operator
 
@@ -14,20 +16,26 @@ def fonctionDjikstraObjet(graph, command):
     contraintesInit = rob.Robot(command.commandeValide())
     contraintesInit.setter(command.nbA, command.nbB, command.nbC)
 
-    costsPath = fonctionQuiUpdateLeCost(graph[0], nodes, graph, command, contraintesInit)
+    costsPath = fonctionQuiUpdateLeCost(0, nodes, graph, command, contraintesInit)
+
+    print(costsPath)
 
     all_costs_paths = []
     for (cost, path) in costsPath:
-        return_cost, return_path = graph.single_source_dijkstra(graph, path[-1], graph[0])
-        all_costs_paths.append(cost + return_cost, path + return_path[1:])
+        return_cost, return_path = nx.single_source_dijkstra(graph, path[-1], 0)
+        all_costs_paths.append((cost + return_cost, path + return_path[1:]))
 
     # Minimum sur le premier element du tuple pour la list (cout, chemin)
     best_cost, best_path = min(all_costs_paths, key=operator.itemgetter(0))
+    print (best_cost, best_path)
 
     return best_cost, best_path.reverse()
 
 
 def fonctionQuiUpdateLeCost(start_node, nodes, graph, command, contraintesInit):
+
+    if len(nodes) < 1:
+        return [(0, [])]
 
     costsPath = []
 
@@ -38,9 +46,9 @@ def fonctionQuiUpdateLeCost(start_node, nodes, graph, command, contraintesInit):
         cost, updcmd = calculateCost(path, command, nodes, contraintesInit, graph)
 
         #On enleve les nodes maintenant vides et celles qui ne servent plus ( pas d'objet utile )
-        updates_nodes = [n for n in nodes if n not in path and  ((updcmd.nbA > 0 and graph[n]["nbA"] > 0) or (updcmd.nbB > 0 and graph[n]["nbB"] > 0) or (updcmd.nbC > 0 and graph[n]["nbC1"
-                                                                                                                                                                                      ""] > 0))]
+        updates_nodes = [n for n in nodes if n not in path and  ((updcmd.nbA > 0 and graph._node[n]["nbA"] > 0) or (updcmd.nbB > 0 and graph._node[n]["nbB"] > 0) or (updcmd.nbC > 0 and graph._node[n]["nbC"] > 0))]
 
+        newnode = path[-1]
         #On recalcule les chemins afin d'avoir un dijkstra dans un dijkstra sur toutes les nodes
         next_costs_path = fonctionQuiUpdateLeCost(path[-1], updates_nodes, graph, updcmd, contraintesInit)
 
@@ -49,11 +57,12 @@ def fonctionQuiUpdateLeCost(start_node, nodes, graph, command, contraintesInit):
     return costsPath
 
 
-
 def calculateCost(path, command, nodes, contraintes, graph):
 
-    if len(path < 2):
+    if len(path) < 2:
         return 0, command
+
+    updatedCommand = command
 
     first, second = path[0], path[1]
     #On cherche un cout de deplacement avec la masse actuelle de la commande ( methode inverse)
@@ -68,13 +77,13 @@ def calculateCost(path, command, nodes, contraintes, graph):
         numberC = min(command.nbC, graph._node[second]['nbC'])  # Nombre d'objet C
         objectSumCost = (numberA + numberB + numberC) * 10
 
-    updatedCommand = comm.Command(command.nbA - numberA, command.nbB - numberB, command.nbC - numberC)
+        updatedCommand = comm.Command(command.nbA - numberA, command.nbB - numberB, command.nbC - numberC)
 
     sum = graph.get_edge_data(first, second)['weight'] * contraintes.calculConstVitesse()
     sum += objectSumCost
 
     #Calcul recursif du cost
-    s, uc = calculateCost(path[1:], updatedCommand, contraintes, graph)
+    s, uc = calculateCost(path[1:], updatedCommand, nodes, contraintes, graph)
 
     return s + sum, uc
 
