@@ -75,8 +75,8 @@ def trouverChemin():
         pathToFinalNode = algoDji.path_to_object(G, path, commandAsked)
         stops = algoDji.finds_stops(G, pathToFinalNode, commandAsked)
         cost = algoDji.printCost(pathToFinalNode, stops, commandAsked.commandeValide(), G)
-        print('Le robot utilise est le robot de type ' + commandAsked.commandeValide())
-        print('Le robot a pris ' + cost + ' secondes')
+        print('Le robot utilise est le robot de type: ' + str(commandAsked.commandeValide()))
+        print('Le robot a pris ' + str(cost) + ' secondes')
     print("<-------------Fin-------------->" + '\n')
 
 

@@ -27,10 +27,7 @@ class Command:
             return 'X'
 
     def afficherCommande(self):
-        print ('Nombre de colis A:')
-        print(self.nbA)
-        print('Nombre de colis B:')
-        print(self.nbB)
-        print('Nombre de colis C:')
-        print(self.nbC)
+        print('nombre object A: ' + str(self.nbA))
+        print('nombre object B: ' + str(self.nbB))
+        print('nombre object C: ' + str(self.nbC))
 
