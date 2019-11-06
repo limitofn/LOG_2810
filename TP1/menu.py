@@ -20,7 +20,7 @@ switcher = {
     6: Quitter
 }
 
-def menu ():
+def main ():
     print (" Bienvenue dans la solution du tp1" +"\n")
     choice = prendreChoix()
     while choice != 0 :
@@ -85,8 +85,12 @@ def TrouverChemin():
     if G == 0:
         print("Veuillez creer le graphique avant" + "\n")
     else:
-        actionSequence = algoDji.find_way(G, commandAsked)
-        print(actionSequence)
+        length, path = algoDji.graph_to_length(G, 0)
+        pathToFinalNode = algoDji.path_to_object(G, path, commandAsked)
+        stops = algoDji.finds_stops(G, pathToFinalNode, commandAsked)
+        cost = algoDji.printCost(pathToFinalNode, stops, commandAsked.commandeValide(), G)
+        print ('Le robot utilise est le robot de type ' + commandAsked.commandeValide() + '\n')
+        print ('Le robot a pris ' + cost + ' secondes' + '\n')
 
 def prendreChoix():
     return affichageDesChoix()
