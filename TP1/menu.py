@@ -8,7 +8,7 @@ import os
 
 commandAsked = comm.Command()
 G = 0
-robotUtilise = 0
+robotUtilise = rob.Robot()
 
 def creerGraphe():
     print("<--------Creer le graphe--------->")
