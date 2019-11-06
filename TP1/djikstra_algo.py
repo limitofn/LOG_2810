@@ -40,10 +40,10 @@ def partialCommandFullfill(nbr,nbCommand,listOfStops,type,nodeIndex):
             listOfStops.append([nodeIndex, type, nbr]) #object = command. put the command to 0 and append the stop
             nbCommand = 0
         elif nbr < nbCommand:
-            listOfStops.append([nodeIndex, 'A', nbr])  #TODO: si la commande est plus grand on modifie la commande par le nombre de node puis on append le nombre de node ici
+            listOfStops.append([nodeIndex, type, nbr])  #TODO: si la commande est plus grand on modifie la commande par le nombre de node puis on append le nombre de node ici
             nbCommand = nbCommand - nbr
         elif nbr > nbCommand:
-            listOfStops.append([nodeIndex, 'A', nbCommand]) #TODO: si le nombre requis est plus grand, on append la commande
+            listOfStops.append([nodeIndex, type, nbCommand]) #TODO: si le nombre requis est plus grand, on append la commande
             nbCommand = 0
 
 def printCost (pathToFinalNode, stops, robotType,graph) :
@@ -57,7 +57,7 @@ def printCost (pathToFinalNode, stops, robotType,graph) :
 
 
     for node in pathToFinalNode:
-        sum = 0
+
         #0 etant la premiere node, on passe au deuxieme element pour avoir des paires qui se suivent jusqu'a la final node
         if node == 0:
             previousNode = 0
@@ -76,22 +76,21 @@ def printCost (pathToFinalNode, stops, robotType,graph) :
 
     for node in pathToFinalNode:
 
-        #if the node where we are contains objets to be added, add them
+
         for stop in stops:
             if stop[0] == node:
+                # if the node where we are contains objets to be added, add them
                 robotCarrier.add(stop[2],stop[1])
                 print('Ajout de ' + str(stop[2]) + ' ' + stop[1] +' au noeud ' + str(node))
 
         sum = 0
+
         if node == pathToFinalNode[0]:
             previousNode = pathToFinalNode[0]
             continue
         sum = graph.get_edge_data(previousNode, node)['weight'] * robotCarrier.calculConstVitesse()
         costSum += sum
         print('Cost entre ' + str(previousNode) + ' et ' + str(node) + '  ' + str(sum))
-
-
-
 
     #print final cost
 

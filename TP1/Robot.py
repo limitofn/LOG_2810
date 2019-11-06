@@ -21,8 +21,8 @@ class Robot:
 
     def calculConstVitesse(self):
         if self.type == 'X':
-            return 1 + self.conteneurA + self.contenurB * 3
+            return 1 + self.conteneurA + self.conteneurB * 3
         elif self.type == 'Y':
             return 1.5 + 0.6*(self.conteneurA + self.conteneurB * 3 + self.conteneurC*6)
         elif self.type == 'Z':
-            return 2.5+ 0.2(self.conteneurA + self.contenurB * 3 + self.conteneurC*6)
+            return 2.5+ 0.2(self.conteneurA + self.conteneurB * 3 + self.conteneurC*6)
