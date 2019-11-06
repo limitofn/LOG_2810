@@ -1,6 +1,8 @@
 class Command:
-    def __init__(self):
-        self.setter()
+    def __init__(self, a=0, b=0, c=0):
+        self.nbA = a
+        self.nbB = b
+        self.nbC = c
 
     def setter(self):
         print('Passage de Commande')
@@ -25,7 +27,7 @@ class Command:
             return 'X'
 
     def afficherCommande(self):
-        print('nombre object A '+ self.nbA)
-        print('nombre object B ' + self.nbB)
-        print('nombre object C ' + self.nbC)
+        print('nombre object A: ' + str(self.nbA))
+        print('nombre object B: ' + str(self.nbB))
+        print('nombre object C: ' + str(self.nbC))
 
