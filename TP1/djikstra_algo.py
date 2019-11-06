@@ -48,16 +48,10 @@ def partialCommandFullfill(nbr,nbCommand,listOfStops,type,nodeIndex):
 
 def printCost (pathToFinalNode, stops, robotType,graph) :
     #requires path from 0 to final node,list of stop and objects taken, robot type
-    weight = 0
     costSum = 0
     robotCarrier = rob.Robot(robotType)
-    constK = robotCarrier.calculConstVitesse()
-
     # Calculate cost to get to final node from initial node
-
-
     for node in pathToFinalNode:
-
         #0 etant la premiere node, on passe au deuxieme element pour avoir des paires qui se suivent jusqu'a la final node
         if node == 0:
             previousNode = 0
@@ -66,11 +60,10 @@ def printCost (pathToFinalNode, stops, robotType,graph) :
         costSum += sum
         print('Cost entre ' + str(previousNode) + ' et ' + str(node) +'  ' + str(sum))
         previousNode = node
-
     print("")
+
     #Starting from final node, pick up objects then calculate cost
     # to next node until first node is reached.
-
     #Inverse the path so that it starts at final node and ends at first node
     pathToFinalNode.reverse()
 
@@ -81,9 +74,8 @@ def printCost (pathToFinalNode, stops, robotType,graph) :
                 # if the node where we are contains objets to be added, add them
                 robotCarrier.add(stop[2],stop[1])
                 print('Ajout de ' + str(stop[2]) + ' ' + stop[1] +' au noeud ' + str(node))
-                costSum += 10
+                costSum += 10*stop[2]
         sum = 0
-
         if node == pathToFinalNode[0]:
             previousNode = pathToFinalNode[0]
             continue
@@ -91,7 +83,6 @@ def printCost (pathToFinalNode, stops, robotType,graph) :
         costSum += sum
         print('Cost entre ' + str(previousNode) + ' et ' + str(node) + '  ' + str(sum))
     return costSum
-
     #print final cost
 
 
