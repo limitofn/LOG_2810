@@ -68,7 +68,7 @@ def afficherCommande():
 
 def trouverChemin():
     print("<--------Trouver le plus court Chemin--------->")
-    if G == 0:
+    if G == 0 or (commandAsked.nbA == 0) & (commandAsked.nbB == 0) & (commandAsked.nbC == 0):
         print("Veuillez creer le graphique avant")
     else:
         length, path = algoDji.graph_to_length(G, 0)
