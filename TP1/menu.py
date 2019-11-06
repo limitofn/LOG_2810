@@ -20,7 +20,7 @@ switcher = {
     6: Quitter
 }
 
-def menu ():
+def main ():
     print (" Bienvenue dans la solution du tp1" +"\n")
     choice = prendreChoix()
     while choice != 0 :
