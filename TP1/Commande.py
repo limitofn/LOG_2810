@@ -1,6 +1,8 @@
 class Command:
-    def __init__(self):
-        self.setter()
+    def __init__(self, a=0, b=0, c=0):
+        self.nbA = a
+        self.nbB = b
+        self.nbC = c
 
     def setter(self):
         print('Passage de Commande')
