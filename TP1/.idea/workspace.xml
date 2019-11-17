@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f716cbf-b83f-4a2e-8a3c-4f6f40b39e82" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Djikstra.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commande.py" beforeDir="false" afterPath="$PROJECT_DIR$/Commande.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helloworld.py" beforeDir="false" afterPath="$PROJECT_DIR$/Helloworld.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Robot.py" beforeDir="false" afterPath="$PROJECT_DIR$/Robot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weighted_graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/weighted_graph.png" afterDir="false" />
-    </list>
+    <list default="true" id="6f716cbf-b83f-4a2e-8a3c-4f6f40b39e82" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +42,9 @@
       <module name="TP1" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="C:\Users\marca\Desktop\LOG_2810\TP1\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -109,6 +105,7 @@
       <workItem from="1572290974001" duration="4368000" />
       <workItem from="1572823044849" duration="6822000" />
       <workItem from="1572885215623" duration="8474000" />
+      <workItem from="1574015045319" duration="63000" />
     </task>
     <task id="LOCAL-00001" summary="Bonjour!!">
       <created>1572291134027</created>
