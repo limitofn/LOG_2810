@@ -30,23 +30,16 @@ class Order:
     def removeAllObject(self, listObject):
         for object in self.order:
             listObject.append(object)
-        self.order = []
+        self.order.clear()
         return listObject
 
     def checkOut(self, listObject):
-        for object in self.order:
-            if object.type == 'A':
-                self.weight += 1
-            if object.type == 'B':
-                self.weight += 3
-            if object.type == 'C':
-                self.weight += 5
         if self.weight >= 25:
             newInventory = self.removeAllObject(listObject)
             print("Panier trop lourd! Commande abandonnnee")
             return newInventory
         else:
             print("Commande passee! Merci d'avoir magasine chez nous!")
-            self.order = []
+            self.order.clear
 
 

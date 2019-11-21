@@ -10,9 +10,9 @@ class WordSearch:
         self.type = None
 
     def getInput(self):
-        self.debutNom = input('Critere de Recherche Nom')
-        self.debutcode = input('Critere de Recherche Code')
-        self.type = input('Type')
+        self.debutNom = input('Critere de Recherche Nom:')
+        self.debutcode = input('Critere de Recherche Code:')
+        self.type = input('Type:')
 
     def Search(self,listObject):
         listObjectValid = []
