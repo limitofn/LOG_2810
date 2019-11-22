@@ -10,69 +10,86 @@ print('test')
 
 
 def trouverItem():
+
+    global listeObjectFound
+    global listObject
+
     print("<--------Searching Item--------->")
     wordSearcher.getInput()
     listeObjectFound = wordSearcher.Search(listObject)
     if len(listeObjectFound) == 0:
         print("Aucun objet trouver!")
     else:
-        print("Les objets trouves sont:")
+        print("Les objets correspondants sont:")
         i = 0
         while i <= 10 & i <= len(listeObjectFound):
-            print("-" + str(listeObjectFound[1]))
+            print("-" + str(listeObjectFound[i].nom) + " " + str(listeObjectFound[i].code) + " "
+                  + str(listeObjectFound[i].type))
             i = i + 1
 
 
 def ajouterObjet():
+
+    global listeObjectFound
+    global listObject
+
     print("<--------Ajout d'un objet--------->")
-    if listeObjectFound == 0:
+    if len(listeObjectFound) == 0:
         print("Veuillez faire une recherche avant d'ajouter un objet")
     else:
         print("Voici les objets trouver ou restant de la recherche")
         i = 0
         while i <= 10 & i <= len(listeObjectFound):
-            print(str(i) + "- " + str(listeObjectFound[i]))
+            print(str(i) + "- " + str(listeObjectFound[i].nom) + " " + str(listeObjectFound[i].code) + " "
+                  + str(listeObjectFound[i].type))
             i = i + 1
+
+        userInput = int(input("Veuillez entre le numero de l'objet:"))
+        listeObjectTmp = panier.addObject(listObject, listeObjectFound[userInput])
+        print("L'objet ayant le code " + str(listeObjectFound[userInput].code) + " a ete rajoute au panier")
+        listeObjectFound.remove(listeObjectFound[userInput])
+        listObject = listeObjectTmp
+
         print("Voulez-vous ajouter un objet a votre panier?")
         print("1- Oui          2-Non")
         userInput = int(input('Entrez votre choix numerique:'))
+
         if userInput == 1:
-            userInput = int(input("Veuillez entre le numero de l'objet:"))
-            listeObjectTmp = []
-            listeObjectTmp = order.addObject(listObject, listeObjectFound[userInput])
-            print("L'objet " + str(listeObjectFound[userInput]) + " a ete rajoute au panier")
-            listeObjectFound.remove(listeObjectFound[userInput])
-            listObject = listeObjectTmp
             ajouterObjet()
         else:
             print("Retour au menu principal")
 
 
 def clearPanier():
+    global listObject
     print("<--------Retrait de tous les objets--------->")
-    if order.order == None:
+    if len(panier.order) == 0:
         print("Aucun objet dans le panier!")
     else:
-        listObjectTmp = []
-        listObjectTmp = order.removeAllObject(listObject)
+        listObjectTmp = panier.removeAllObject(listObject)
         listObject = listObjectTmp
         print("Tous les objets ont ete retire et remis dans l'inventaire!")
 
 
 def afficherCommande():
     print("<--------Affichage du panier--------->")
-    if order.order == None:
+    if len(panier.order) == 0:
         print("Aucun objet dans le panier!")
     else:
-        order.printOrder()
+        panier.printOrder()
 
 
 def checkOut():
+    global listObject
     print("<-------- Checkout --------->")
-    if order.order == None:
+    if len(panier.order) == 0:
         print("Aucun objet dans le panier!")
     else:
-        order.checkOut()
+        inventaire = []
+        inventaire = panier.checkOut(listObject)
+        if len(inventaire) > 0:
+            listObject = inventaire
+
 
 
 def prendreChoix():
@@ -80,6 +97,7 @@ def prendreChoix():
 
 
 def affichageDesChoix():
+    print ("<-------- Menu principal --------->")
     print("Choisir parmi les options suivantes: ")
     print("1 - Trouver un objet")
     print("2 - Ajouter un objet au panier")
@@ -107,6 +125,7 @@ switcher = {
     4: afficherCommande,
     5: checkOut
 }
+
 
 def main():
     print("Bienvenue dans la solution du tp2")

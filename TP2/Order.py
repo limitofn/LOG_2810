@@ -23,8 +23,10 @@ class Order:
             print("Désolé, votre panier est vide")
         else:
             print("Votre panier contient:")
-            for i in self.order:
-                print(self.order[i])
+            i = 0
+            while i < len(self.order):
+                print("-" + str(self.order[i].nom) + " " + str(self.order[i].code) + " " + str(self.order[i].type))
+                i = i + 1
             print("Et le poid du panier est de " + str(self.weight) + "Kg")
 
     def removeAllObject(self, listObject):
@@ -40,6 +42,7 @@ class Order:
             return newInventory
         else:
             print("Commande passee! Merci d'avoir magasine chez nous!")
-            self.order.clear
+            self.order.clear()
+            return self.order
 
 
