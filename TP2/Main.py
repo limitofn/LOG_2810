@@ -22,7 +22,7 @@ def trouverItem():
     else:
         print("Les objets correspondants sont:")
         i = 0
-        while i <= 10 & i <= len(listeObjectFound):
+        while i < 10 and i < len(listeObjectFound):
             print("-" + str(listeObjectFound[i].nom) + " " + str(listeObjectFound[i].code) + " "
                   + str(listeObjectFound[i].type))
             i = i + 1
@@ -39,7 +39,7 @@ def ajouterObjet():
     else:
         print("Voici les objets trouver ou restant de la recherche")
         i = 0
-        while i <= 10 & i <= len(listeObjectFound):
+        while i <= 10 and i < len(listeObjectFound):
             print(str(i) + "- " + str(listeObjectFound[i].nom) + " " + str(listeObjectFound[i].code) + " "
                   + str(listeObjectFound[i].type))
             i = i + 1
