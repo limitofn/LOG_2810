@@ -37,7 +37,7 @@ def ajouterObjet():
     if len(listeObjectFound) == 0:
         print("Veuillez faire une recherche avant d'ajouter un objet")
     else:
-        print("Voici les objets trouver ou restant de la recherche")
+        print("Voici les objets trouver ou restant dans recherche")
         i = 0
         while i <= 10 and i < len(listeObjectFound):
             print(str(i) + "- " + str(listeObjectFound[i].nom) + " " + str(listeObjectFound[i].code) + " "

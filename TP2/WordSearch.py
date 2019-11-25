@@ -17,15 +17,45 @@ class WordSearch:
     def Search(self,listObject):
         listObjectValid = []
         for object in listObject:
-            check = [
-            object.nom.startswith(self.debutNom),
-            object.code.startswith(self.debutcode),
-            object.type == self.type
-            ]
+
+            if self.debutNom == "" and self.debutcode == "" and self.type == "":  #verifier
+                return listObject
+            elif self.debutcode == "" and self.debutNom == "":  #verifie
+                check = [
+                    object.type == self.type
+                ]
+            elif self.debutcode == "" and self.type == "":  #verifier
+                check = [
+                    object.nom.startswith(self.debutNom),
+                ]
+            elif self.debutNom == "" and self.type == "":  #verifier
+                check = [
+                    object.code.startswith(self.debutcode),
+                ]
+            elif self.debutNom == "":  #verifie
+                check = [
+                    object.code.startswith(self.debutcode),
+                    object.type == self.type
+                ]
+            elif self.debutcode == "":  #verifie
+                check = [
+                    object.nom.startswith(self.debutNom),
+                    object.type == self.type
+                ]
+            elif self.type == "":  #verifie
+                check = [
+                    object.nom.startswith(self.debutNom),
+                    object.code.startswith(self.debutcode),
+                ]
+            else:
+                check = [
+                    object.nom.startswith(self.debutNom),
+                    object.code.startswith(self.debutcode),
+                    object.type == self.type
+                ]
 
             if all(check):
                 listObjectValid.append(object)
-
         return listObjectValid
 
 
