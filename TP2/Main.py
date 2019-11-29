@@ -2,13 +2,14 @@ import FileReader as file
 import WordSearch as search
 import Order as order
 
+#Variable globale
 listObject = file.fillArrayFromFile('inventaire.txt')
 wordSearcher = search.WordSearch()
 panier = order.Order()
 listeObjectFound = []
 print('test')
 
-
+#Focntion de recherche pour trouver des objets dans une liste
 def trouverItem():
 
     global listeObjectFound
@@ -27,7 +28,7 @@ def trouverItem():
                   + str(listeObjectFound[i].type))
             i = i + 1
 
-
+#Fonction permettant d'ajouter un objet ou des objets de la liste de recherche dans le panier
 def ajouterObjet():
 
     global listeObjectFound
@@ -59,7 +60,7 @@ def ajouterObjet():
         else:
             print("Retour au menu principal")
 
-
+#fonction permetant d'enlever tous les objets et de les remettre dans l'inventaire
 def clearPanier():
     global listObject
     print("<--------Retrait de tous les objets--------->")
@@ -70,7 +71,7 @@ def clearPanier():
         listObject = listObjectTmp
         print("Tous les objets ont ete retire et remis dans l'inventaire!")
 
-
+#fonction permettant d'afficher la commande
 def afficherCommande():
     print("<--------Affichage du panier--------->")
     if len(panier.order) == 0:
@@ -78,7 +79,7 @@ def afficherCommande():
     else:
         panier.printOrder()
 
-
+#fonction permettant de checkout les objets (ceux-ci ne reviennent pas dans l'inventaire)
 def checkOut():
     global listObject
     print("<-------- Checkout --------->")
