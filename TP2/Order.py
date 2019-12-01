@@ -20,7 +20,7 @@ class Order:
 
     def printOrder(self):
         if self.order == None:
-            print("Désolé, votre panier est vide")
+            print("Desole, votre panier est vide")
         else:
             print("Votre panier contient:")
             i = 0
