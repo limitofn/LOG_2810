@@ -40,25 +40,27 @@ def ajouterObjet():
     else:
         print("Voici les objets trouver ou restant dans recherche")
         i = 0
-        while i <= 10 and i < len(listeObjectFound):
+        while i < 10 and i < len(listeObjectFound):
             print(str(i) + "- " + str(listeObjectFound[i].nom) + " " + str(listeObjectFound[i].code) + " "
                   + str(listeObjectFound[i].type))
             i = i + 1
+        try:
+            userInput = int(input("Veuillez entre le numero de l'objet:"))
+            if userInput < i:
+                print("L'objet ayant le code " + str(listeObjectFound[userInput].code) + " et le type " +
+                      str(listeObjectFound[userInput].type) + " a ete rajoute au panier")
 
-        userInput = int(input("Veuillez entre le numero de l'objet:"))
-        listeObjectTmp = panier.addObject(listObject, listeObjectFound[userInput])
-        print("L'objet ayant le code " + str(listeObjectFound[userInput].code) + " a ete rajoute au panier")
-        listeObjectFound.remove(listeObjectFound[userInput])
-        listObject = listeObjectTmp
-
-        print("Voulez-vous ajouter un objet a votre panier?")
-        print("1- Oui          2-Non")
-        userInput = int(input('Entrez votre choix numerique:'))
-
-        if userInput == 1:
+                listeObjectTmp = panier.addObject(listObject, listeObjectFound[userInput])
+                listeObjectFound.remove(listeObjectFound[userInput])
+                listObject = listeObjectTmp
+                ajouterSecondObjet()
+            else:
+                print("Entrez un choix valide!")
+                ajouterObjet()
+        except ValueError:
+            print("Entrez un choix valide!")
             ajouterObjet()
-        else:
-            print("Retour au menu principal")
+
 
 #fonction permetant d'enlever tous les objets et de les remettre dans l'inventaire
 def clearPanier():
@@ -92,9 +94,25 @@ def checkOut():
             listObject = inventaire
 
 
-
 def prendreChoix():
     return affichageDesChoix()
+
+def ajouterSecondObjet():
+    print("Voulez-vous ajouter un objet a votre panier?")
+    print("1- Oui          2-Non")
+    try:
+        userInput = int(input('Entrez votre choix numerique:'))
+
+        if userInput == 1:
+            ajouterObjet()
+        elif userInput == 2:
+            print("Retour au menu principal")
+        else:
+            print("Entrez un choix valide!")
+            ajouterSecondObjet()
+    except ValueError:
+        print("Entrez un choix valide!")
+        ajouterSecondObjet()
 
 
 def affichageDesChoix():
@@ -107,13 +125,18 @@ def affichageDesChoix():
     print("5 - Passer la commande")
     print("Quitter en entrant '6'")
 
-    userInput = int(input('Entrez votre choix:'))
+    try:
+        userInput = int(input('Entrez votre choix:'))
 
-    if (userInput >= 0) & (userInput < 6):
-        return userInput
-    if userInput == 6:
-        return 0
-    else:
+        if (userInput > 0) & (userInput < 6):
+            return userInput
+        elif userInput == 6:
+            return 0
+        else:
+            print("Entrez un choix valide")
+            userInput = affichageDesChoix()
+            return userInput
+    except ValueError:
         print("Entrez un choix valide")
         userInput = affichageDesChoix()
         return userInput
